@@ -4,17 +4,19 @@ import {HashRouter, Route, Switch, Redirect} from 'react-router-dom';
 
 import LoginComp from './login';
 import MasterComp from './master';
+import Err404Comp from './error';
 
 class Index extends PureComponent{
 
     render(){
         return(
             <HashRouter>
-                <div>
+                <Switch>
                     <Route exact path="/" render={()=> <Redirect to="/acts" /> } />
                     <Route path="/acts" component={MasterComp} />
                     <Route path="/login" component={LoginComp} />
-                </div>
+                    <Route component={Err404Comp} />
+                </Switch>
             </HashRouter>
         );
     }
