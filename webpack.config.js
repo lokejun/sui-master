@@ -60,8 +60,7 @@ module.exports = {
                 loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader?modules&localIdentName=[name]-[local]-[hash:base64:5]!autoprefixer-loader' })
             }, {
                 test: /\.less/,
-                use: ['style-loader','css-loader?modules&localIdentName=[name]-[local]-[hash:base64:5]', 'autoprefixer-loader',{loader: 'less-loader', options: {modifyVars: theme}}]
-                // loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader?modules&localIdentName=[name]-[local]-[hash:base64:5]!autoprefixer-loader!less-loader' })
+                loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader?modules&localIdentName=[name]-[local]-[hash:base64:5]', 'autoprefixer-loader',{loader: 'less-loader', options: {modifyVars: theme}}]})
             }, {
                 test: /\.(eot|woff|svg|ttf|woff2|gif|appcache)(\?|$)/,
                 loader: 'file-loader?name=[name].[ext]&publicPath=../' + publicPath
