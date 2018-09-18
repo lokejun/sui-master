@@ -10,6 +10,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin'); //拷贝文件
 
 var publicPath = '/static/'; //服务器路径
 var path = __dirname + '/static/';
+var theme = require('./src/theme');
 
 var plugins = [];
 
@@ -59,7 +60,8 @@ module.exports = {
                 loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader?modules&localIdentName=[name]-[local]-[hash:base64:5]!autoprefixer-loader' })
             }, {
                 test: /\.less/,
-                loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader?modules&localIdentName=[name]-[local]-[hash:base64:5]!autoprefixer-loader!less-loader' })
+                use: ['style-loader','css-loader?modules&localIdentName=[name]-[local]-[hash:base64:5]', 'autoprefixer-loader',{loader: 'less-loader', options: {modifyVars: theme}}]
+                // loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader?modules&localIdentName=[name]-[local]-[hash:base64:5]!autoprefixer-loader!less-loader' })
             }, {
                 test: /\.(eot|woff|svg|ttf|woff2|gif|appcache)(\?|$)/,
                 loader: 'file-loader?name=[name].[ext]&publicPath=../' + publicPath
