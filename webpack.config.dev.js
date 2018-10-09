@@ -45,10 +45,10 @@ module.exports = {
                 use: ['style-loader','css-loader?modules&localIdentName=[name]-[local]-[hash:base64:5]', 'autoprefixer-loader',{loader: 'less-loader', options: {modifyVars: theme}}]
                 // loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader?modules&localIdentName=[name]-[local]-[hash:base64:5]!autoprefixer-loader!less-loader' })
             }, {
-                test: /\.(eot|woff|svg|ttf|woff2|gif|appcache)(\?|$)/,
+                test: /\.(eot|woff|svg|ttf|woff2|appcache)(\?|$)/,
                 loader: 'file-loader?name=[name].[ext]'
             }, {
-                test: /\.(png|jpg)$/,
+                test: /\.(gif|png|jpg)$/,
                 loader: 'url-loader?limit=20000&name=[name].[ext]' //注意后面那个limit的参数，当你图片大小小于这个限制的时候，会自动启用base64编码图片
             }, {
                 test: /\.jsx$/,

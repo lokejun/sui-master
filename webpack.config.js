@@ -62,11 +62,11 @@ module.exports = {
                 test: /\.less/,
                 loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader?modules&localIdentName=[name]-[local]-[hash:base64:5]', 'autoprefixer-loader',{loader: 'less-loader', options: {modifyVars: theme}}]})
             }, {
-                test: /\.(eot|woff|svg|ttf|woff2|gif|appcache)(\?|$)/,
+                test: /\.(eot|woff|svg|ttf|woff2|appcache)(\?|$)/,
                 loader: 'file-loader?name=[name].[ext]&publicPath=../' + publicPath
             }, {
-                test: /\.(png|jpg|svg)$/,
-                loader: 'url-loader?limit=20000&name=[name].[ext]&publicPath=../' + publicPath //注意后面那个limit的参数，当你图片大小小于这个限制的时候，会自动启用base64编码图片
+                test: /\.(gif|png|jpg|svg)$/,
+                loader: 'url-loader?limit=20000&name=[name].[ext]&publicPath=' + publicPath //注意后面那个limit的参数，当你图片大小小于这个限制的时候，会自动启用base64编码图片
             }, {
                 test: /\.jsx$/,
                 loaders: ['jsx-loader', 'babel-loader?presets[]=es2015,presets[]=react,presets[]=stage-0,plugins[]=transform-runtime'],
